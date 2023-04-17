@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Employee</title>
+
+    </head>
+    <body>
+        <form method="post" action="{% url 'api:add_employee' company_id=company_id %}">
+            {% csrf_token %}
+            <label for="employee">Employee:</label>
+            <select name="employee" id="employee" class="select2">
+                {% for employee in employees %}
+                <option value = "{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add Employee">
+        </form>
+        
+    </body>
+</html>
